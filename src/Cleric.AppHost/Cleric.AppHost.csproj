@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Cleric\Cleric.Web\Cleric.Web.csproj" />
+    <ProjectReference Include="..\Cleric.Web\Cleric.Web.csproj" />
   </ItemGroup>
 
 </Project>
