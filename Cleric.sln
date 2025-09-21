@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleric.Web", "src\Cleric.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleric.UnitTests", "tests\Cleric.UnitTests\Cleric.UnitTests.csproj", "{2D1C8179-CA7A-47BD-A547-BA958E7A5213}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleric.Database", "src\Cleric.Database\Cleric.Database.csproj", "{4E654257-985B-4387-A688-A0FA427C9B45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{2D1C8179-CA7A-47BD-A547-BA958E7A5213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D1C8179-CA7A-47BD-A547-BA958E7A5213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D1C8179-CA7A-47BD-A547-BA958E7A5213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E654257-985B-4387-A688-A0FA427C9B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E654257-985B-4387-A688-A0FA427C9B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E654257-985B-4387-A688-A0FA427C9B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E654257-985B-4387-A688-A0FA427C9B45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{FC074AC5-9F4B-4E9F-94AB-2197F5CCC209} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{4ADD7320-CBC8-7CAF-7286-A0DAB0586328} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{2D1C8179-CA7A-47BD-A547-BA958E7A5213} = {71A68392-BF95-4ACE-9DB5-377DD27E41CC}
+		{4E654257-985B-4387-A688-A0FA427C9B45} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ECC34670-287B-4D4E-8F1F-DFE7B92D55CD}
