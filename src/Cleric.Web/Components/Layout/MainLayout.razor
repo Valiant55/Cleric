@@ -1,23 +1,57 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime Js
+@inject IHttpContextAccessor HttpContextAccessor
 
-<div class="page">
-    <div class="sidebar">
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="_isDarkMode" />
+<MudPopoverProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">Cleric.Web</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer Fixed="true">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code {
+    bool _drawerOpen = true;
+    private bool _isDarkMode = false;
+    private bool _themeSet = false;
+    private MudThemeProvider _mudThemeProvider;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    protected override void OnInitialized()
+    {
+        var themeCookie = HttpContextAccessor?.HttpContext?.Request.Cookies["theme-preference"];
+        
+        if(themeCookie is not null)
+        {
+            _isDarkMode = themeCookie == "true";
+            _themeSet = true;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_themeSet)
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
+            var age = 365 * 24 * 60 * 60; // One year
+            await Js.InvokeVoidAsync("eval", $"document.cookie = \"theme-preference=true; max-age={age}\"");
+            StateHasChanged();
+        }
+    }
+}

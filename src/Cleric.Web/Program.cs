@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
 using Cleric.Web.Components;
 using Cleric.Web.Components.Account;
 using Cleric.Web.Data;
@@ -8,6 +9,8 @@ using Cleric.Web.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.Services.AddMudServices();
+builder.Services.AddHttpContextAccessor();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -54,8 +57,6 @@ else
 }
 
 app.UseHttpsRedirection();
-
-
 app.UseAntiforgery();
 
 app.MapStaticAssets();
